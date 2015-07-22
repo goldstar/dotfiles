@@ -22,6 +22,7 @@ get_bundle jgdavey tslime.vim
 get_bundle jgdavey vim-blockle
 get_bundle jgdavey vim-turbux
 get_bundle kchmck vim-coffee-script
+get_bundle kien ctrlp.vim
 get_bundle mileszs ack.vim
 get_bundle pangloss vim-javascript
 get_bundle rking ag.vim
