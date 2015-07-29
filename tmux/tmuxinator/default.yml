@@ -29,6 +29,9 @@ root: <%= Dir.pwd %>
 
 windows:
   - editor:
+      # Pull this magic layout from list-windows within tmux
+      # since screens are different sizes, this will be up to you to pull/customize.
+      # http://stackoverflow.com/questions/9812000
       layout: 778c,238x73,0,0{157x73,0,0,0,80x73,158,0[80x35,158,0,3,80x37,158,36,4]}
       panes:
         - vim
