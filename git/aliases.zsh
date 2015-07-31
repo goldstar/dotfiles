@@ -73,6 +73,25 @@ git_prompt_info () {
   fi
 }
 
+# We push the branch to origin after rebasing on master so it auto-closes the git pull req.
+merge() {
+  args=("$@")
+  if [ ! -n "${args[0]}" ]; then
+    echo "Please provide the branch name"
+    exit
+  fi
+  git checkout master
+  git pull --rebase --prune
+  git checkout $1
+  git rebase master && \
+  git push origin $1 -fu && \
+  git checkout master && \
+  git merge $1 && \
+  git push origin master && \
+  git push origin --delete $1 && \
+  git branch -D $1
+}
+
 alias gap='git add -p'
 alias gc='git commit -v'
 alias gd='git diff --no-ext-diff'
