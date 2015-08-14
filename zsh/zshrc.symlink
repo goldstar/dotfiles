@@ -42,7 +42,9 @@ cdpath=(. ~ ~/src $SOURCE_DIR)
 # ubuntu location
 [[ ! -a /usr/local/share/chruby/chruby.sh ]] || source /usr/local/share/chruby/chruby.sh
 [[ ! -a /usr/local/share/chruby/auto.sh ]] || source /usr/local/share/chruby/auto.sh
-
+# Add ruby-build rubies already installed locally for chruby to use
+[[ -d /usr/local/rbenv/versions ]] && RUBIES+=(/usr/local/rbenv/versions/*)
+[[ -d ~/.rbenv/versions ]] && RUBIES+=(~/.rbenv/versions/*)
 
 # import local zsh customizations, if present
 zrcl="$HOME/.zshrc.local"
