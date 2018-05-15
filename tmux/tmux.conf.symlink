@@ -24,10 +24,6 @@ bind Up resize-pane -Z
 unbind Down
 bind Down resize-pane -Z
 
-# Allows scrolling and selecting in copy-mode
-set -g mode-mouse on
-set -g mouse-select-pane on
-
 # Don't delay forever on escape!
 set -sg escape-time 0
 
