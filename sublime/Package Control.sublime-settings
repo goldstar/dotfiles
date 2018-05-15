@@ -1,0 +1,29 @@
+// $HOME/.config/sublime-text-3/Packages/User
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"Alignment",
+		"Case Conversion",
+		"ExpandRegion",
+		"File Rename",
+		"Git",
+		"HTML Mustache",
+		"Indent XML",
+		"IndentX",
+		"MoveTab",
+		"Package Control",
+		"PackageResourceViewer",
+		"RawLineEdit",
+		"RSpec",
+		"Ruby Hash Converter",
+		"Select Quoted",
+		"StripHTML",
+		"Surround",
+		"TestRSpec"
+	]
+}
