@@ -15,7 +15,7 @@ then
 fi
 
 # Install homebrew 'essential' packages
-BREWS=(ack ctags-exuberant chruby macvim markdown proctools redis ruby-install the_silver_searcher tmux wget)
+BREWS=(ack ctags-exuberant chruby macvim markdown proctools redis ruby-install the_silver_searcher tmux wget jq)
 for brew in ${BREWS[@]}; do
   $BREW_COMMAND list $brew > /dev/null 2>&1
   if [[ "$?" -eq "1" ]]; then
