@@ -23,13 +23,24 @@ case ${DISTRO} in
 esac
 
 if [ ! -d "$SUBLIME_DIR" ]; then
-  echo "Sublime is not installed"
+  echo "Install Sublime first!"
   exit 1
 fi
 
-USER_PREFERENCES="${HOME}/.sublime-settings.local"
+# Merging Package Settings
+SUBLIME_PACKAGES="${SUBLIME_DIR}/Package Control.sublime-settings"
+
+if [ ! -f "${SUBLIME_PACKAGES}" ]; then
+  echo "Install Sublime Package Control First"
+  exit 1
+fi
+
+cp "${SUBLIME_PACKAGES}" "${SUBLIME_PACKAGES}.backup"
+
+${JQ_COMMAND} -s '[.[]]' "${SUBLIME_PACKAGES}" "${DOTHOME}/sublime/Package Control.sublime-settings" | ${JQ_COMMAND} '.[0].installed_packages=([.[].installed_packages]|flatten|unique)|.[0]' > "${SUBLIME_PACKAGES}"
 
 # Merging User Settings files
+USER_PREFERENCES="${HOME}/.sublime-settings.local"
 FINAL_SUBLIME_SETTINGS="${SUBLIME_DIR}/Preferences.sublime-settings"
 
 if [ -f ${USER_PREFERENCES} ]; then
@@ -38,10 +49,3 @@ if [ -f ${USER_PREFERENCES} ]; then
 else
   cp "${DOTHOME}/sublime/Preferences.sublime-settings" "${FINAL_SUBLIME_SETTINGS}"
 fi
-
-# Merging Package Settings
-SUBLIME_PACKAGES="${SUBLIME_DIR}/Package Control.sublime-settings"
-
-cp "${SUBLIME_PACKAGES}" "${SUBLIME_PACKAGES}.backup"
-
-${JQ_COMMAND} -s '[.[]]' "${SUBLIME_PACKAGES}" "${DOTHOME}/sublime/Package Control.sublime-settings" | ${JQ_COMMAND} '.[0].installed_packages=([.[].installed_packages]|flatten|unique)|.[0]' > "${SUBLIME_PACKAGES}"
