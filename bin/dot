@@ -6,7 +6,7 @@
 # to make sure you're on the latest and greatest.
 export DOTHOME=$HOME/.dotfiles
 
-DISTRO=$(uname)
+DISTRO=$(uname -s)
 case $DISTRO in
   'Linux')
     sudo apt-get update
