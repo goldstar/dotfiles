@@ -34,7 +34,7 @@ FINAL_SUBLIME_SETTINGS="${SUBLIME_DIR}/Preferences.sublime-settings"
 
 if [ -f ${USER_PREFERENCES} ]; then
   cp "${SUBLIME_DIR}/Preferences.sublime-settings{,.backup}"
-  jq -s add . "${USER_PREFERENCES}" "${DOTHOME}/sublime/Preferences.sublime-settings" > "${FINAL_SUBLIME_SETTINGS}"
+  ${JQ_COMMAND} -s add . "${USER_PREFERENCES}" "${DOTHOME}/sublime/Preferences.sublime-settings" > "${FINAL_SUBLIME_SETTINGS}"
 else
   cp "${DOTHOME}/sublime/Preferences.sublime-settings" "${FINAL_SUBLIME_SETTINGS}"
 fi
@@ -44,7 +44,4 @@ SUBLIME_PACKAGES="${SUBLIME_DIR}/Package Control.sublime-settings"
 
 cp "${SUBLIME_PACKAGES}" "${SUBLIME_PACKAGES}.backup"
 
-NEW_PREFERENCES=$(jq -s '[.[]]' "${SUBLIME_PACKAGES}" "${DOTHOME}/sublime/Package Control.sublime-settings" | jq '.[0].installed_packages=([.[].installed_packages]|flatten|unique)|.[0]')
-
-echo ${SUBLIME_PACKAGES} > "${NEW_PREFERENCES}"
-
+${JQ_COMMAND} -s '[.[]]' "${SUBLIME_PACKAGES}" "${DOTHOME}/sublime/Package Control.sublime-settings" | ${JQ_COMMAND} '.[0].installed_packages=([.[].installed_packages]|flatten|unique)|.[0]' > "${SUBLIME_PACKAGES}"
