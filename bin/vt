@@ -1,0 +1,16 @@
+#!/bin/bash
+
+[[ -x $(which vault) ]] || { echo "Please install vault with your OS's package manager"; exit 1; }
+
+TOKEN_HELP="Create a .github-token file in your home directory that contains only a personal access token for github.com.\nDetails on how to create a token can be found here: https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line"
+
+[[ -f ~/.github-token ]] || { echo "${TOKEN_HELP}"; exit 1; }
+
+if vault login -no-print -method=github token=$(cat ~/.github-token); then
+  echo "Logged into vault, token stored in ~/.vault-token"
+  exit 0
+else
+  c=$?
+  echo "Error logging into vault, see above error message"
+  exit $c
+fi
