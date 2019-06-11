@@ -4,7 +4,7 @@ NOMAD_ACL_GROUP=${1}
 
 usage() {
 echo  "Usage:"
-echo  "  $(basename $0) <NOMAD_ACL_GROUP>"
+echo  "  $(basename "${0}") <NOMAD_ACL_GROUP>"
 echo  "  Options are "operations", "development", or "trusted" -- these are tied directly to the Github groups you are a part of."
 echo  "  Generally, development is very locked down so if you need more access than reading job statuses you will need to use either"
 echo  "  the operations or trusted groups."
@@ -14,10 +14,10 @@ echo  "  the operations or trusted groups."
 
 [[ -z $NOMAD_ACL_GROUP ]] && usage
 
-[[ -x $(which vt) ]] || { echo "Missing \"vt\" command, this means something is wrong with your .dotfiles repo"; exit 1; }
+[[ -x $(command -v vt) ]] || { echo "Missing \"vt\" command, this means something is wrong with your .dotfiles repo"; exit 1; }
 
 vt >/dev/null || exit $?
 
-NOMAD_TOKEN=$(vault read -field=secret_id nomad/creds/${NOMAD_ACL_GROUP} 2>/dev/null) || { echo $NOMAD_TOKEN; exit 0; }
+NOMAD_TOKEN=$(vault read -field=secret_id nomad/creds/"${NOMAD_ACL_GROUP}" 2>/dev/null) || { echo "$NOMAD_TOKEN"; exit 0; }
 
 echo "NOMAD_TOKEN=$NOMAD_TOKEN"
