@@ -14,7 +14,8 @@ echo  "  the operations or trusted groups."
 
 [[ -z $NOMAD_ACL_GROUP ]] && usage
 
-[[ -x $(command -v vt) ]] || { echo "Missing \"vt\" command, this means something is wrong with your .dotfiles repo"; exit 1; }
+[[ -x $(command -v vt) ]] || { echo "Missing \"vt\" command, this means something is wrong with your ~/.dotfiles repo"; exit 1; }
+
 
 vt >/dev/null || exit $?
 
