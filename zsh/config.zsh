@@ -62,3 +62,7 @@ bindkey '^x^e' edit-command-line
 bindkey '\ep' up-line-or-search
 bindkey '\en' down-line-or-search
 bindkey '\ew' kill-region
+
+# Hashicorp targets
+export VAULT_ADDR="https://vault.gse-eng.io"
+export NOMAD_ADDR="https://nomad-servers.gse-eng.io"
