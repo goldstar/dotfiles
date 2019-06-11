@@ -1,0 +1,26 @@
+#!/bin/bash
+
+NOMAD_ACL_GROUP=${1}
+
+usage() {
+echo  "Usage:"
+echo  "  $(basename "${0}") <NOMAD_ACL_GROUP>"
+echo  "  Options are \"operations\", \"development\", or \"trusted\" -- these are tied directly to the Github groups you are a part of."
+echo  "  Generally, development is very locked down so if you need more access than reading job statuses you will need to use either"
+echo  "  the operations or trusted groups."
+
+  exit 1
+}
+
+[[ -z $NOMAD_ACL_GROUP ]] && usage
+
+[[ -x $(command -v vt) ]] || { echo "Missing \"vt\" command, this means something is wrong with your ~/.dotfiles repo"; exit 1; }
+
+
+vt >/dev/null || exit $?
+
+NOMAD_TOKEN=$(vault read -field=secret_id nomad/creds/"${NOMAD_ACL_GROUP}" 2>/dev/null)
+
+[[ -z $NOMAD_TOKEN ]] && { echo "Nomad didn't return a token -- this likely means you don't have access to the ${NOMAD_ACL_GROUP} group"; exit 1; }
+
+echo "NOMAD_TOKEN=$NOMAD_TOKEN"
