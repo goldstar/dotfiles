@@ -16,13 +16,13 @@ get_bundle() {
 
 get_bundle duff vim-bufonly
 get_bundle elzr vim-json
-get_bundle fatih vim-go
 get_bundle godlygeek tabular
+get_bundle hashivim vim-terraform
 get_bundle jgdavey tslime.vim
 get_bundle jgdavey vim-blockle
 get_bundle jgdavey vim-turbux
+get_bundle junegunn fzf
 get_bundle kchmck vim-coffee-script
-get_bundle kien ctrlp.vim
 get_bundle mileszs ack.vim
 get_bundle pangloss vim-javascript
 get_bundle rking ag.vim
@@ -39,10 +39,12 @@ get_bundle tpope vim-git
 get_bundle tpope vim-haml
 get_bundle tpope vim-markdown
 get_bundle tpope vim-pathogen
+get_bundle tpope vim-projectionist
 get_bundle tpope vim-ragtag
 get_bundle tpope vim-rails
 get_bundle tpope vim-rake
 get_bundle tpope vim-repeat
+get_bundle tpope vim-rhubarb
 get_bundle tpope vim-rsi
 get_bundle tpope vim-sensible
 get_bundle tpope vim-sleuth

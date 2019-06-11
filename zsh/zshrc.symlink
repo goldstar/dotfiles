@@ -32,6 +32,9 @@ done
 
 unset config_files
 
+# I want to use [ and ] damn it!
+unsetopt nomatch
+
 # set cd autocompletion to commonly visited directories
 cdpath=(. ~ ~/src $SOURCE_DIR)
 
@@ -42,10 +45,10 @@ cdpath=(. ~ ~/src $SOURCE_DIR)
 # ubuntu location
 [[ ! -a /usr/local/share/chruby/chruby.sh ]] || source /usr/local/share/chruby/chruby.sh
 [[ ! -a /usr/local/share/chruby/auto.sh ]] || source /usr/local/share/chruby/auto.sh
-# Add ruby-build rubies already installed locally for chruby to use
-[[ -d /usr/local/rbenv/versions ]] && RUBIES+=(/usr/local/rbenv/versions/*)
-[[ -d ~/.rbenv/versions ]] && RUBIES+=(~/.rbenv/versions/*)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # import local zsh customizations, if present
 zrcl="$HOME/.zshrc.local"
+
 [[ ! -a $zrcl ]] || source $zrcl
