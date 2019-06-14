@@ -1,0 +1,22 @@
+# Text editors
+brew "ctags-exuberant"
+brew "macvim"
+brew "markdown"
+
+# Terminal Tools
+brew "proctools"
+brew "the_silver_searcher"
+brew "tmux"
+brew "wget"
+brew "ack"
+
+# Application Dependencies
+brew "redis"
+brew "chruby"
+brew "ruby-install"
+
+# Hasicorp Tools
+brew "nomad"
+brew "vault"
+brew "consul"
+brew "terraform"
