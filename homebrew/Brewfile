@@ -9,13 +9,14 @@ brew "the_silver_searcher"
 brew "tmux"
 brew "wget"
 brew "ack"
+brew "fzf"
 
 # Application Dependencies
 brew "redis"
 brew "chruby"
 brew "ruby-install"
 
-# Hasicorp Tools
+# Hashicorp Tools
 brew "nomad"
 brew "vault"
 brew "consul"
