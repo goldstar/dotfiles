@@ -26,6 +26,7 @@ get_bundle kchmck vim-coffee-script
 get_bundle mileszs ack.vim
 get_bundle pangloss vim-javascript
 get_bundle rking ag.vim
+get_bundle rust-lang rust.vim
 get_bundle therubymug vim-pyte
 get_bundle tomasr molokai
 get_bundle tpope vim-abolish

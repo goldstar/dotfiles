@@ -38,6 +38,9 @@ unsetopt nomatch
 # set cd autocompletion to commonly visited directories
 cdpath=(. ~ ~/src $SOURCE_DIR)
 
+# rust, et al
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # chruby!
 # osx location
 [[ ! -a /usr/local/opt/chruby/share/chruby/chruby.sh ]] || source /usr/local/opt/chruby/share/chruby/chruby.sh
