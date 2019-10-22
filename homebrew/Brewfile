@@ -21,3 +21,6 @@ brew "nomad"
 brew "vault"
 brew "consul"
 brew "terraform"
+
+# Javascript
+brew "nvm"
