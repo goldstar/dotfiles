@@ -22,5 +22,10 @@ brew "vault"
 brew "consul"
 brew "terraform"
 
+# Databases
+brew "mysql@5.7"
+brew "postgresql@9.6"
+
 # Javascript
 brew "nvm"
+brew "yarn"
