@@ -14,9 +14,6 @@ then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" > /tmp/homebrew-install.log
 fi
 
-${BREW_COMMAND} update
 ${BREW_COMMAND} bundle --file=$HOME/.dotfiles/homebrew/Brewfile install
-${BREW_COMMAND} upgrade
-${BREW_COMMAND} cleanup
 
 exit 0
