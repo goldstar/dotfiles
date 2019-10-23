@@ -15,9 +15,8 @@ then
 fi
 
 ${BREW_COMMAND} update
-${BREW_COMMAND} bundle install
-${BREW_COMMAND} upgrade --all
+${BREW_COMMAND} bundle --file=$HOME/.dotfiles/homebrew/Brewfile install
+${BREW_COMMAND} upgrade
 ${BREW_COMMAND} cleanup
-${BREW_COMMAND} prune
 
 exit 0
