@@ -19,6 +19,8 @@ case $DISTRO in
     sh $DOTHOME/homebrew/install.sh 2>&1
     # Install/upgrade rubies
     sh $DOTHOME/ruby/install.sh 2>&1
+    # Symlink databases
+    sh $DOTHOME/databases/install.sh 2>&1
     ;;
   *)
     echo "Good luck with that"
