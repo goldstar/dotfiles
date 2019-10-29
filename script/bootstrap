@@ -32,15 +32,24 @@ setup_gitconfig_local () {
   then
     info 'setup gitconfig'
 
-    user ' - What is your github author name?'
+    user ' - What is your github author name (e.g. first/last name)?'
     read -e git_authorname
     user ' - What is your github author email?'
     read -e git_authoremail
 
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" git/gitconfig.local.example > $HOME/.gitconfig.local
+    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/${git_authoremail}/g" git/gitconfig.local.example > $HOME/.gitconfig.local
 
     success 'gitconfig'
   fi
+
+  if [ ! -f "$HOME/.ssh/id_rsa.pub" ]; then
+    ssh-keygen -t rsa -C "${git_authoremail}"
+    cat $HOME/.ssh/id_rsa.pub
+  fi
+
+  cat $HOME/.ssh/id_rsa.pub | pbcopy
+  echo "Your ssh public key has been copied to your clipboard.\n Add it to github.com (unless it's there already) and press any key to continue"
+  read
 }
 
 
