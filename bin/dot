@@ -17,6 +17,8 @@ case $DISTRO in
     sh $DOTHOME/osx/set-defaults.sh
     # Install/upgrade homebrew packages
     sh $DOTHOME/homebrew/install.sh 2>&1
+    # Install/upgrade rubies
+    sh $DOTHOME/ruby/install.sh 2>&1
     ;;
   *)
     echo "Good luck with that"

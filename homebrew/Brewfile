@@ -1,19 +1,26 @@
 # Text editors
 brew "ctags-exuberant"
-brew "macvim"
 brew "markdown"
 
 # Terminal Tools
+brew "ack"
+brew "fzf"
+brew "git"
+brew "hub"
 brew "proctools"
 brew "the_silver_searcher"
 brew "tmux"
 brew "wget"
-brew "ack"
-brew "fzf"
 
 # Application Dependencies
-brew "redis"
+brew "autoconf"
+brew "automake"
 brew "chruby"
+brew "gcc"
+brew "imagemagick"
+brew "libksba"
+brew "memcached"
+brew "redis"
 brew "ruby-install"
 
 # Hashicorp Tools
