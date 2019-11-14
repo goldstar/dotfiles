@@ -3,7 +3,7 @@
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 
-NODES_TO_INSTALL=(10.15.0)
+NODES_TO_INSTALL=(13.0.1 10.15.0)
 DEFAULT_NODE_VERSION=${NODES_TO_INSTALL[0]}
 
 echo "Installing nodes"
