@@ -18,10 +18,13 @@ case $DISTRO in
     # Install/upgrade nodes
     sh $DOTHOME/node/install.sh 2>&1
     # Install/upgrade homebrew packages
+    echo "Homebrew update"
     sh $DOTHOME/homebrew/install.sh 2>&1
     # Install/upgrade rubies
+    echo "Ruby update"
     sh $DOTHOME/ruby/install.sh 2>&1
     # Symlink databases
+    echo "Database(s) update"
     sh $DOTHOME/databases/install.sh 2>&1
     ;;
   *)
