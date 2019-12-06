@@ -66,8 +66,6 @@ Host *
 SSHCONFIG
   fi
 
-  echo "Adding key to ssh agent"
-  ssh-copy-id -i $HOME/.ssh/id_rsa.pub ${USER}@${USERNAME}
 }
 
 
