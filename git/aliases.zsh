@@ -173,10 +173,13 @@ merge() {
     esac
   fi
 
-  git push origin master && \
-    git checkout master && \
-    git push origin --delete ${branch} && \
-    git branch -D ${branch}
+  branch_count_remote=$(git branch -a | egrep "remotes/origin/${branch}" | wc -l)
+
+  git push origin master && git checkout master
+  if [ "${branch_count_remote}" = "1" ]; then
+    git push origin --delete ${branch}
+  fi
+  git branch -D ${branch}
 }
 
 NCPU=$([[ $(uname) = 'Darwin' ]] && sysctl -n hw.ncpu || nproc --all)
