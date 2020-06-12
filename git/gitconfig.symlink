@@ -30,6 +30,7 @@
         excludesfile = ~/.gitignore
         editor = vim
         whitespace = warn
+	abbrev = 7
 [help]
         autocorrect = 10
 [interactive]

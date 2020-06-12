@@ -27,3 +27,4 @@ tmp
 .eslintrc
 .rubocop.yml
 *terraform.tfstate.backup
+*.terraform
