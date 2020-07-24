@@ -21,7 +21,7 @@ then
     read
   fi
   echo "  Installing Homebrew for you."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
 ${BREW_COMMAND} bundle --file=$HOME/.dotfiles/homebrew/Brewfile install
