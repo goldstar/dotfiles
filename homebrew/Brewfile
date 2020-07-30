@@ -1,6 +1,7 @@
 # Text editors
 brew "ctags-exuberant"
 brew "markdown"
+brew "vim"
 
 # Terminal Tools
 brew "ack"
