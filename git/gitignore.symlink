@@ -23,6 +23,7 @@
 tags
 tmp
 .csslintrc
+.mux
 .eslintignore
 .eslintrc
 *terraform.tfstate.backup
