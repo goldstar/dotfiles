@@ -1,3 +1,9 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
+tap "homebrew/services"
+
 # Text editors
 brew "ctags-exuberant"
 brew "markdown"
@@ -17,11 +23,11 @@ brew "reattach-to-user-namespace"
 brew "the_silver_searcher"
 brew "tmux"
 brew "wget"
+cask "aws-vault"
 
 # Application Dependencies
 brew "autoconf"
 brew "automake"
-brew "aws-vault"
 brew "awslogs"
 brew "chruby"
 brew "gcc"
