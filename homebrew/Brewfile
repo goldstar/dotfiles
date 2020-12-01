@@ -36,8 +36,6 @@ brew "libksba"
 brew "memcached"
 brew "redis"
 brew "ruby-install"
-brew "unison"
-brew "eugenmayer/dockersync/unox"
 
 # Hashicorp Tools
 brew "consul"

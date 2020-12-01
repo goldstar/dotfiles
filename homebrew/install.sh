@@ -24,7 +24,17 @@ then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
-${BREW_COMMAND} bundle --file=$HOME/.dotfiles/homebrew/Brewfile install
+${BREW_COMMAND} bundle --file=${HOME}/.dotfiles/homebrew/Brewfile install
+
+# These are depecrated!
+rm -f /usr/local/share/zsh/site-functions/_git /usr/local/share/zsh/site-functions/git-completion.bash
+
+# This is the actual hotness.
+git_version=$(git --version | grep git | cut -d ' ' -f3)
+curl https://raw.githubusercontent.com/git/git/v${git_version}/contrib/completion/git-completion.zsh -o ${HOME}/.dotfiles/functions/_git > /dev/null 2>&1
+if [[ "$?" -eq "0" ]]; then
+  echo "git zsh autocompletion installed from source"
+fi
 
 touch "${HOME}/.tmux.conf.local"
 
