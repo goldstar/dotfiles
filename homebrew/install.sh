@@ -14,9 +14,9 @@ then
   xcode-select -p
   if [[ "$?" -eq "2" ]]; then
     sudo xcode-select --install
-    echo ""
+    echo
     echo "Please install 'Command Line Tools for Xcode' (follow instructions on window prompt)"
-    echo ""
+    echo
     echo "Press any key to continue…"
     read
   fi
@@ -26,14 +26,12 @@ fi
 
 ${BREW_COMMAND} bundle --file=${HOME}/.dotfiles/homebrew/Brewfile install
 
-# These are depecrated!
-rm -f /usr/local/share/zsh/site-functions/_git /usr/local/share/zsh/site-functions/git-completion.bash
-
-# This is the actual hotness.
 git_version=$(git --version | grep git | cut -d ' ' -f3)
 curl https://raw.githubusercontent.com/git/git/v${git_version}/contrib/completion/git-completion.zsh -o ${HOME}/.dotfiles/functions/_git > /dev/null 2>&1
 if [[ "$?" -eq "0" ]]; then
+  echo
   echo "git zsh autocompletion installed from source"
+  echo
 fi
 
 touch "${HOME}/.tmux.conf.local"
