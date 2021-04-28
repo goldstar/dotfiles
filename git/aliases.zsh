@@ -94,13 +94,15 @@ git_prompt_info () {
   fi
 }
 
-# We push the branch to origin after rebasing on master so it auto-closes the git pull req.
+# We push the branch to origin after rebasing on default_branch so it auto-closes the git pull req.
 merge() {
   local git_interactive=''
   local prompt_before_pushing='true'
   local branch=$(git_local_branch)
   local uncommitted_changes
   uncommitted_changes=$(git status --porcelain 2> /dev/null)
+  local default_branch_name
+  default_branch_name=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
 
   if [ -n "$1" ]; then
     case $1 in
@@ -111,11 +113,11 @@ merge() {
         echo
         echo "Usage: merge [options]"
         echo
-        echo "Merges your current branch onto master."
+        echo "Merges your current branch onto ${default_branch_name}."
         echo
         echo "General options:"
-        echo "  -i, --interactive            Rebase your branch interactively with master"
-        echo "  -f, --no-prompts             Don't prompt me before pushing to master"
+        echo "  -i, --interactive            Rebase your branch interactively with ${default_branch_name}"
+        echo "  -f, --no-prompts             Don't prompt me before pushing to ${default_branch_name}"
         echo
         echo "Common options:"
         echo "  -h, --help                   Show this message"
@@ -136,20 +138,20 @@ merge() {
     return
   fi
 
-  if [ "${branch}" = "master" ]; then
+  if [ "${branch}" = "${default_branch_name}" ]; then
     echo
-    echo "You can't merge *master* onto *master*"
+    echo "You can't merge *${default_branch_name}* onto *${default_branch_name}*"
     echo "Please checkout the branch you're wanting to merge and run \`merge\` again"
     echo
     return
   fi
 
-  git checkout master
+  git checkout ${default_branch_name}
   git pull --rebase --prune
   git checkout ${branch}
-  git rebase ${git_interactive} master
+  git rebase ${git_interactive} ${default_branch_name}
   git push --force origin ${branch}
-  git checkout master
+  git checkout ${default_branch_name}
   git merge ${branch}
 
   echo
@@ -158,15 +160,15 @@ merge() {
 
   if [ "${prompt_before_pushing}" != "do_not_prompt" ]; then
     echo
-    echo "Are you sure you want to push master to origin? (No/yes)"
+    echo "Are you sure you want to push ${default_branch_name} to origin? (No/yes)"
     read push_to_origin
     case ${push_to_origin} in
       [yY] | [yY][Ee][Ss] )
-        echo "Pushing master to origin"
+        echo "Pushing ${default_branch_name} to origin"
         echo
         ;;
       *)
-        echo "Did not push master to origin"
+        echo "Did not push ${default_branch_name} to origin"
         echo
         return
         ;;
@@ -175,7 +177,7 @@ merge() {
 
   branch_count_remote=$(git branch -a | egrep "remotes/origin/${branch}" | wc -l)
 
-  git push origin master && git checkout master
+  git push origin ${default_branch_name} && git checkout ${default_branch_name}
   if [ "${branch_count_remote}" = "1" ]; then
     git push origin --delete ${branch}
   fi
