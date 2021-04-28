@@ -20,6 +20,10 @@ set guifont=Monaco:h16
 set guioptions-=T guioptions-=e guioptions-=L guioptions-=r
 set shell=bash
 
+set number
+
+map <C-a> <esc>ggVG<CR>
+
 augroup vimrc
   autocmd!
   autocmd GuiEnter * set columns=120 lines=70 number
@@ -32,3 +36,18 @@ map Q :qa
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Plugins will be downloaded under the specified directory.
+call plug#begin('~/.vim/plugged')
+
+" Declare the list of plugins.
+Plug 'christoomey/vim-tmux-runner'
+
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
