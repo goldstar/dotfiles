@@ -149,8 +149,8 @@ merge() {
   git checkout ${default_branch_name}
   git pull --rebase --prune
   git checkout ${branch}
-  git rebase ${git_interactive} ${default_branch_name}
-  git push --force origin ${branch}
+  git rebase -S ${git_interactive} ${default_branch_name}
+  git push --force-with-lease origin ${branch}
   git checkout ${default_branch_name}
   git merge ${branch}
 
@@ -187,6 +187,7 @@ merge() {
 NCPU=$([[ $(uname) = 'Darwin' ]] && sysctl -n hw.ncpu || nproc --all)
 alias gap="git add -p"
 alias gc="git commit -S -v"
+alias gca="git commit -S -v --amend -CHEAD"
 alias gd="git diff --no-ext-diff"
 alias gdc="gds"
 alias gds="git diff --staged --no-ext-diff"
