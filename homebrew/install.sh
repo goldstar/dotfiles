@@ -5,7 +5,7 @@
 # This installs some of the common dependencies needed (or at least desired)
 # using Homebrew.
 
-BREW_COMMAND=/usr/local/bin/brew
+BREW_COMMAND=$(which brew)
 
 # Check for Homebrew
 if test ! $(which brew)
