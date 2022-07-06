@@ -1,7 +1,7 @@
 # ~/aliases.zsh
 # vim:set ft=sh sw=2 sts=2:
 
-muxable_paths=(${SOURCE_DIR}/gs)
+muxable_paths=(${SOURCE_DIR}/gs ${SOURCE_DIR}/ttg)
 
 mux() {
   local name cols
