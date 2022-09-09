@@ -16,6 +16,7 @@ get_bundle() {
 
 get_bundle duff vim-bufonly
 get_bundle elzr vim-json
+get_bundle fatih vim-go
 get_bundle godlygeek tabular
 get_bundle hashivim vim-terraform
 get_bundle jgdavey tslime.vim
@@ -32,7 +33,6 @@ get_bundle tomasr molokai
 get_bundle tpope vim-abolish
 get_bundle tpope vim-bundler
 get_bundle tpope vim-commentary
-get_bundle  fatih vim-go
 get_bundle tpope vim-cucumber
 get_bundle tpope vim-endwise
 get_bundle tpope vim-eunuch
