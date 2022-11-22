@@ -70,3 +70,4 @@ zrcl="$HOME/.zshrc.local"
 [[ ! -a $zrcl ]] || source $zrcl
 
 function gam() { "/Users/csessions/bin/gam/gam" "$@" ; }
+export PYENV_ROOT="$HOME/.pyenv"
